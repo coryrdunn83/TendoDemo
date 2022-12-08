@@ -1,4 +1,4 @@
-package com.example.tendodemo
+package com.example.tendodemo.ui
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -6,12 +6,14 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.example.tendodemo.ui.navigation.Screen
+import com.example.tendodemo.ui.navigation.TendoDemoNavHost
 import com.example.tendodemo.ui.theme.TendoDemoTheme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,22 +21,14 @@ class MainActivity : ComponentActivity() {
             TendoDemoTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(modifier = Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
-                    Greeting("Android")
+                    val navController = rememberNavController()
+
+                    TendoDemoNavHost(
+                        navController = navController,
+                        startDestination = Screen.HomeScreen.route
+                    )
                 }
             }
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String) {
-    Text(text = "Hello $name!")
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    TendoDemoTheme {
-        Greeting("Android")
     }
 }
