@@ -6,6 +6,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.runtime.snapshotFlow
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.tendodemo.domain.models.PatientBundle
+import com.example.tendodemo.domain.repository.PatientRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -15,7 +17,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class SurveyScreenViewModel @Inject constructor(
-
+    patientRepository: PatientRepository
 ): ViewModel() {
     private var currentPage by mutableStateOf(SurveyPage.RECOMMEND_RATING)
     private var rating by mutableStateOf(0)
@@ -23,12 +25,14 @@ class SurveyScreenViewModel @Inject constructor(
     private var feedback by mutableStateOf("")
 
     val uiState: StateFlow<SurveyScreenState> = combine(
+        patientRepository.patientDataFlow,
         snapshotFlow { currentPage },
         snapshotFlow { rating },
         snapshotFlow { explainedDiagnosis },
         snapshotFlow { feedback }
-    ) { page, rating, diagnosis, feedback ->
+    ) { patient, page, rating, diagnosis, feedback ->
         SurveyScreenState(
+            patientBundle = patient,
             currentPage = page,
             rating = rating,
             explainedDiagnosis = diagnosis,
@@ -59,6 +63,7 @@ class SurveyScreenViewModel @Inject constructor(
 }
 
 data class SurveyScreenState(
+    val patientBundle: PatientBundle? = null,
     val currentPage: SurveyPage = SurveyPage.RECOMMEND_RATING,
     val rating: Int = 0,
     val explainedDiagnosis: Boolean? = null,

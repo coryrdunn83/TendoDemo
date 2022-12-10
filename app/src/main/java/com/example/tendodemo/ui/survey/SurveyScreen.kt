@@ -29,10 +29,10 @@ fun SurveyScreen(
         modifier = Modifier.fillMaxSize().padding(horizontal = 24.dp)
     ) {
         when (uiState.currentPage) {
-            SurveyPage.RECOMMEND_RATING -> { RecommendRatingPage(viewModel = viewModel) }
-            SurveyPage.DIAGNOSIS -> { DiagnosisPage(viewModel = viewModel) }
-            SurveyPage.FEELINGS -> { FeelingsPage(viewModel = viewModel) }
-            SurveyPage.REVIEW -> { ReviewPage(viewModel = viewModel, navController = navController) }
+            SurveyPage.RECOMMEND_RATING -> { RecommendRatingPage(viewModel = viewModel, patient = uiState.patientBundle) }
+            SurveyPage.DIAGNOSIS -> { DiagnosisPage(viewModel = viewModel, explainedDiagnosis = uiState.explainedDiagnosis) }
+            SurveyPage.FEELINGS -> { FeelingsPage(viewModel = viewModel, feedback = uiState.feedback) }
+            SurveyPage.REVIEW -> { ReviewPage(viewModel = viewModel, uiState = uiState, navController = navController) }
         }
     }
 }
