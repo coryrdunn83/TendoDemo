@@ -14,8 +14,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tendodemo.R
 import com.example.tendodemo.ui.survey.SurveyScreenViewModel
 import com.example.tendodemo.ui.theme.TendoBlue
 import com.example.tendodemo.ui.theme.TendoPink
@@ -25,7 +27,9 @@ import com.example.tendodemo.ui.theme.TendoWhite
 @Composable
 fun DiagnosisPage(
     viewModel: SurveyScreenViewModel,
-    explainedDiagnosis: Boolean? = null
+    explainedDiagnosis: Boolean? = null,
+    patientDiagnosis: String = "",
+    patientDoctorName: String = ""
 ) {
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -36,8 +40,7 @@ fun DiagnosisPage(
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "Thank you. You were diagnosed with blank. Did Dr. Name explain how to manage" +
-                    " this diagnosis in a way you could understand?",
+                text = stringResource(id = R.string.survey_diagnosis_question, patientDiagnosis, patientDoctorName),
                 fontSize = 14.sp,
                 color = TendoTextGray
             )
@@ -57,7 +60,7 @@ fun DiagnosisPage(
                     border = BorderStroke(width = 1.dp, color = TendoPink),
                     modifier = Modifier.width(150.dp)
                 ) {
-                    Text(text = "Yes")
+                    Text(text = stringResource(id = R.string.survey_diagnosis_yes_btn_text).uppercase())
                 }
                 Spacer(modifier = Modifier.width(12.dp))
                 Button(
@@ -70,7 +73,7 @@ fun DiagnosisPage(
                     border = BorderStroke(width = 1.dp, color = TendoPink),
                     modifier = Modifier.width(150.dp)
                 ) {
-                    Text(text = "No")
+                    Text(text = stringResource(id = R.string.survey_diagnosis_no_btn_text).uppercase())
                 }
             }
             Spacer(modifier = Modifier.height(24.dp))
@@ -88,13 +91,13 @@ fun DiagnosisPage(
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
-                            text = "NEXT",
+                            text = stringResource(id = R.string.survey_general_next_btn_text).uppercase(),
                             color = TendoBlue,
                             fontSize = 16.sp
                         )
                         Icon(
                             imageVector = Icons.Filled.KeyboardArrowRight,
-                            contentDescription = "Next",
+                            contentDescription = stringResource(id = R.string.survey_general_next_icon_desc),
                             tint = TendoBlue,
                             modifier = Modifier.size(24.dp)
                         )

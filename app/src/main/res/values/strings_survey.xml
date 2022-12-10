@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Common -->
+    <string name="survey_general_next_btn_text">Next</string>
+    <string name="survey_general_next_icon_desc">Next</string>
+    <string name="survey_general_default_patient_name">patient</string>
+
+    <!-- Recommended Rating -->
+    <string name="survey_rating_question">
+        Hi %1$s, on a scale of 1-10, would you recommend Dr. %2$s to a friend or family member?
+    </string>
+
+    <!-- Diagnosis -->
+    <string name="survey_diagnosis_question">
+        Thank you. You were diagnosed with %1$s. Did Dr. %2$s explain how to manage this diagnosis
+        in a way you could understand?
+    </string>
+    <string name="survey_diagnosis_yes_btn_text">Yes</string>
+    <string name="survey_diagnosis_no_btn_text">No</string>
+
+    <!-- Feelings -->
+    <string name="survey_feelings_question">
+        We appreciate the feedback, one last question: how do you feel about being diagnosed with %1$s?
+    </string>
+
+    <!-- Review -->
+    <string name="survey_review_header_text">Thanks again! Here\'s what we heard:</string>
+    <string name="survey_review_rating_text">
+        You rated your likelihood of recommending Dr. %1$s to friends and family as %2$d/10
+    </string>
+    <string name="survey_review_star_icon_desc">Star rating</string>
+    <string name="survey_review_open_star_icon_desc">Open star rating</string>
+    <string name="survey_review_diagnosis_text">
+        Dr. %1$s did%2$s manage to explain your diagnosis in a way that you understood.
+    </string>
+    <string name="survey_review_satisfaction_icon_desc">Satisfied/Unsatisfied icon</string>
+    <string name="survey_review_feedback_no_feedback_text">
+        You did not provide any feedback on your feelings about being diagnosed with %1$s.
+    </string>
+    <string name="survey_review_feedback_header_text">
+        You expressed the following on your feelings about being diagnosed with %1$s:
+    </string>
+    <string name="survey_review_submit_btn_text">Submit</string>
+</resources>

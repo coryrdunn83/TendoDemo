@@ -68,4 +68,17 @@ data class SurveyScreenState(
     val rating: Int = 0,
     val explainedDiagnosis: Boolean? = null,
     val feedback: String = ""
-)
+) {
+    val patientName: String
+        get() = patientBundle?.entry?.firstOrNull()?.resource?.name?.firstOrNull()?.given?.firstOrNull() ?: ""
+
+    val patientDoctorName: String
+        get() = patientBundle?.entry?.firstOrNull {
+            it.resource.resourceType == "Doctor"
+        }?.resource?.name?.firstOrNull()?.family ?: ""
+
+    val patientDiagnosis: String
+        get() = patientBundle?.entry?.firstOrNull {
+            it.resource.resourceType == "Diagnosis"
+        }?.resource?.code?.coding?.firstOrNull()?.name ?: ""
+}

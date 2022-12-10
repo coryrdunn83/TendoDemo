@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -29,7 +30,6 @@ import com.example.tendodemo.ui.theme.TendoWhite
 
 @Composable
 fun ReviewPage(
-    viewModel: SurveyScreenViewModel,
     uiState: SurveyScreenState,
     navController: NavController
 ) {
@@ -42,7 +42,7 @@ fun ReviewPage(
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "Thanks again! Here's what we heard:",
+                text = stringResource(id = R.string.survey_review_header_text),
                 fontSize = 16.sp,
                 color = TendoTextGray,
                 textAlign = TextAlign.Center,
@@ -51,8 +51,7 @@ fun ReviewPage(
             )
             Spacer(modifier = Modifier.height(32.dp))
             Text(
-                text = "You rated your likelihood of recommending Dr. Name to friends and family" +
-                    " as ${uiState.rating}/10",
+                text = stringResource(id = R.string.survey_review_rating_text, uiState.patientDoctorName, uiState.rating),
                 fontSize = 14.sp,
                 color = TendoTextGray,
                 textAlign = TextAlign.Center,
@@ -68,13 +67,13 @@ fun ReviewPage(
                     if (int <= uiState.rating) {
                         Icon(
                             imageVector = Icons.Filled.Star,
-                            contentDescription = "Star",
+                            contentDescription = stringResource(id = R.string.survey_review_star_icon_desc),
                             tint = TendoTeal
                         )
                     } else {
                         Icon(
                             painter = painterResource(id = R.drawable.ic_baseline_star_border_24),
-                            contentDescription = "Star",
+                            contentDescription = stringResource(id = R.string.survey_review_open_star_icon_desc),
                             tint = TendoTeal
                         )
                     }
@@ -83,8 +82,11 @@ fun ReviewPage(
             }
             Spacer(modifier = Modifier.height(24.dp))
             Text(
-                text = "Dr. Name did ${if (uiState.explainedDiagnosis == false) "not " else ""}manage " +
-                    "to explain your diagnosis in a way that you understood.",
+                text = stringResource(
+                    id = R.string.survey_review_diagnosis_text,
+                    uiState.patientDoctorName,
+                    if (uiState.explainedDiagnosis == false) " not" else ""
+                ),
                 fontSize = 14.sp,
                 color = TendoTextGray,
                 textAlign = TextAlign.Center,
@@ -101,14 +103,14 @@ fun ReviewPage(
                         id = if (uiState.explainedDiagnosis == true) R.drawable.ic_baseline_sentiment_very_satisfied_24
                         else R.drawable.ic_baseline_sentiment_very_dissatisfied_24
                     ),
-                    contentDescription = "Satisfaction Icon",
+                    contentDescription = stringResource(id = R.string.survey_review_satisfaction_icon_desc),
                     tint = TendoTeal
                 )
             }
             Spacer(modifier = Modifier.height(24.dp))
             if (uiState.feedback.isEmpty()) {
                 Text(
-                    text = "You did not provide any feedback on your feelings about being diagnosed with blank.",
+                    text = stringResource(id = R.string.survey_review_feedback_no_feedback_text, uiState.patientDiagnosis),
                     fontSize = 14.sp,
                     color = TendoTextGray,
                     textAlign = TextAlign.Center,
@@ -116,7 +118,7 @@ fun ReviewPage(
                 )
             } else {
                 Text(
-                    text = "You expressed the following on your feelings about being diagnosed with blank:",
+                    text = stringResource(id = R.string.survey_review_feedback_header_text, uiState.patientDiagnosis),
                     fontSize = 14.sp,
                     color = TendoTextGray,
                     textAlign = TextAlign.Center,
@@ -145,7 +147,7 @@ fun ReviewPage(
                     ),
                     shape = RoundedCornerShape(10.dp)
                 ) {
-                    Text(text = "Submit")
+                    Text(text = stringResource(id = R.string.survey_review_submit_btn_text).uppercase())
                 }
             }
         }

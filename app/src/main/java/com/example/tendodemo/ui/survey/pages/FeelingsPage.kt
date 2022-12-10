@@ -11,8 +11,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tendodemo.R
 import com.example.tendodemo.ui.survey.SurveyScreenViewModel
 import com.example.tendodemo.ui.theme.TendoBlue
 import com.example.tendodemo.ui.theme.TendoTextGray
@@ -21,7 +23,8 @@ import com.example.tendodemo.ui.theme.TendoTextGray
 @Composable
 fun FeelingsPage(
     viewModel: SurveyScreenViewModel,
-    feedback: String = ""
+    feedback: String = "",
+    patientDiagnosis: String = ""
 ) {
     Box(
         modifier = Modifier.fillMaxSize(),
@@ -32,8 +35,7 @@ fun FeelingsPage(
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "We appreciate your feedback, one last question: how do you feel about being " +
-                    "diagnosed with blank?",
+                text = stringResource(id = R.string.survey_feelings_question, patientDiagnosis),
                 fontSize = 14.sp,
                 color = TendoTextGray
             )
@@ -62,13 +64,13 @@ fun FeelingsPage(
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
-                            text = "NEXT",
+                            text = stringResource(id = R.string.survey_general_next_btn_text).uppercase(),
                             color = TendoBlue,
                             fontSize = 16.sp
                         )
                         Icon(
                             imageVector = Icons.Filled.KeyboardArrowRight,
-                            contentDescription = "Next",
+                            contentDescription = stringResource(id = R.string.survey_general_next_icon_desc),
                             tint = TendoBlue,
                             modifier = Modifier.size(24.dp)
                         )

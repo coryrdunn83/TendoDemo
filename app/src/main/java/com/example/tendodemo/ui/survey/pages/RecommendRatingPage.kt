@@ -11,8 +11,10 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.tendodemo.R
 import com.example.tendodemo.domain.models.PatientBundle
 import com.example.tendodemo.ui.survey.SurveyScreenViewModel
 import com.example.tendodemo.ui.theme.TendoBlue
@@ -22,13 +24,12 @@ import com.example.tendodemo.ui.theme.TendoTextGray
 @Composable
 fun RecommendRatingPage(
     viewModel: SurveyScreenViewModel,
-    patient: PatientBundle? = null
+    patientName: String = stringResource(id = R.string.survey_general_next_btn_text),
+    doctorName: String = ""
 ) {
     val rating = remember{ mutableStateOf("") }
     val ratings = listOf("1", "2", "3", "4", "5", "6", "7", "8", "9", "10")
-    var isError = remember{ mutableStateOf(false) }
-
-    val patientName = patient?.entry?.first()?.resource?.name?.first()
+    val isError = remember{ mutableStateOf(false) }
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -38,7 +39,7 @@ fun RecommendRatingPage(
             verticalArrangement = Arrangement.Center
         ) {
             Text(
-                text = "Hi ${patientName ?: "patient"}, on a scale of 1-10, would you recommend Dr. Name to a friend or family member?",
+                text = stringResource(R.string.survey_rating_question, patientName, doctorName),
                 fontSize = 14.sp,
                 color = TendoTextGray
             )
@@ -74,13 +75,13 @@ fun RecommendRatingPage(
                 ) {
                     Row(verticalAlignment = Alignment.CenterVertically) {
                         Text(
-                            text = "NEXT",
+                            text = stringResource(id = R.string.survey_general_next_btn_text).uppercase(),
                             color = TendoBlue,
                             fontSize = 16.sp
                         )
                         Icon(
                             imageVector = Icons.Filled.KeyboardArrowRight,
-                            contentDescription = "Next",
+                            contentDescription = stringResource(id = R.string.survey_general_next_icon_desc),
                             tint = TendoBlue,
                             modifier = Modifier.size(24.dp)
                         )
