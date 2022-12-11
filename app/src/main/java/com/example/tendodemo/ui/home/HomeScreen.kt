@@ -1,5 +1,8 @@
 package com.example.tendodemo.ui.home
 
+import android.Manifest
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
@@ -12,7 +15,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.tendodemo.R
 import com.example.tendodemo.ui.navigation.Screen
@@ -23,10 +25,16 @@ import com.example.tendodemo.ui.theme.TendoWhite
 
 @Composable
 fun HomeScreen(
-    viewModel: HomeScreenViewModel = hiltViewModel(),
     navController: NavController
 ) {
     val context = LocalContext.current
+
+    val launcher = rememberLauncherForActivityResult(ActivityResultContracts.RequestPermission()) {
+        isGranted: Boolean ->
+        if (isGranted) {
+            SurveyNotification(context).showNotification()
+        }
+    }
 
     LaunchedEffect(Unit) {
         createNotificationChannel(context)
@@ -56,6 +64,7 @@ fun HomeScreen(
             Spacer(modifier = Modifier.height(24.dp))
             Button(
                 onClick = {
+                    launcher.launch(Manifest.permission.POST_NOTIFICATIONS)
                     SurveyNotification(context).showNotification()
                 },
                 colors = ButtonDefaults.buttonColors(
