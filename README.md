@@ -2,4 +2,4 @@
  A demo app built for Tendo
 
 # App Architecture
-    ![App Architecture] (/assets/tendo-demo-arch.png)
+![Tendo Architecture](/assets/tendo-demo-arch.png)
