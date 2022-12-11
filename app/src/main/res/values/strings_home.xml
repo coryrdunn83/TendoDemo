@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="home_take_survey_btn_text">Take Survey</string>
+    <string name="home_send_notif_btn_text">Send Notification</string>
+</resources>
