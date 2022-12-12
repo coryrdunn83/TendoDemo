@@ -7,7 +7,8 @@
 
     <!-- Recommended Rating -->
     <string name="survey_rating_question">
-        Hi %1$s, on a scale of 1-10, would you recommend Dr. %2$s to a friend or family member?
+        Hi %1$s, on a scale of 1-10, would you recommend Dr. %2$s to a friend or family member? 1 =
+        Would not recommend, 10 = Would strongly recommend
     </string>
 
     <!-- Diagnosis -->
