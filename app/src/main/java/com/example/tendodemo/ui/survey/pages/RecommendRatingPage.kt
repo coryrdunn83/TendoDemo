@@ -15,7 +15,6 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.tendodemo.R
-import com.example.tendodemo.domain.models.PatientBundle
 import com.example.tendodemo.ui.survey.SurveyScreenViewModel
 import com.example.tendodemo.ui.theme.TendoBlue
 import com.example.tendodemo.ui.theme.TendoTextGray

@@ -4,7 +4,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Star
-import androidx.compose.material.icons.outlined.Star
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -22,7 +21,6 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.tendodemo.R
 import com.example.tendodemo.ui.survey.SurveyScreenState
-import com.example.tendodemo.ui.survey.SurveyScreenViewModel
 import com.example.tendodemo.ui.theme.TendoPink
 import com.example.tendodemo.ui.theme.TendoTeal
 import com.example.tendodemo.ui.theme.TendoTextGray
@@ -51,7 +49,11 @@ fun ReviewPage(
             )
             Spacer(modifier = Modifier.height(32.dp))
             Text(
-                text = stringResource(id = R.string.survey_review_rating_text, uiState.patientDoctorName, uiState.rating),
+                text = stringResource(
+                    id = R.string.survey_review_rating_text,
+                    uiState.patientDoctorName,
+                    uiState.rating
+                ),
                 fontSize = 14.sp,
                 color = TendoTextGray,
                 textAlign = TextAlign.Center,
@@ -110,7 +112,10 @@ fun ReviewPage(
             Spacer(modifier = Modifier.height(24.dp))
             if (uiState.feedback.isEmpty()) {
                 Text(
-                    text = stringResource(id = R.string.survey_review_feedback_no_feedback_text, uiState.patientDiagnosis),
+                    text = stringResource(
+                        id = R.string.survey_review_feedback_no_feedback_text,
+                        uiState.patientDiagnosis
+                    ),
                     fontSize = 14.sp,
                     color = TendoTextGray,
                     textAlign = TextAlign.Center,
@@ -118,7 +123,10 @@ fun ReviewPage(
                 )
             } else {
                 Text(
-                    text = stringResource(id = R.string.survey_review_feedback_header_text, uiState.patientDiagnosis),
+                    text = stringResource(
+                        id = R.string.survey_review_feedback_header_text,
+                        uiState.patientDiagnosis
+                    ),
                     fontSize = 14.sp,
                     color = TendoTextGray,
                     textAlign = TextAlign.Center,

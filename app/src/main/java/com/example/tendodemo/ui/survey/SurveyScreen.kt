@@ -5,8 +5,8 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
@@ -26,7 +26,10 @@ fun SurveyScreen(
     val uiState: SurveyScreenState by viewModel.uiState.collectAsStateWithLifecycle()
 
     Box(
-        modifier = Modifier.fillMaxSize().padding(horizontal = 24.dp)
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(horizontal = 24.dp)
+            .testTag("Survey Screen")
     ) {
         when (uiState.currentPage) {
             SurveyPage.RECOMMEND_RATING -> {
