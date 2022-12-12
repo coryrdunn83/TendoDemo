@@ -2,4 +2,6 @@
 <resources>
     <string name="home_take_survey_btn_text">Take Survey</string>
     <string name="home_send_notif_btn_text">Send Notification</string>
+    <string name="home_test_tag_home_screen">Home Screen</string>
+    <string name="home_test_tag_survey_button">Take survey button</string>
 </resources>

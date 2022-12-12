@@ -7,11 +7,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import com.example.tendodemo.R
 import com.example.tendodemo.ui.survey.pages.DiagnosisPage
 import com.example.tendodemo.ui.survey.pages.FeelingsPage
 import com.example.tendodemo.ui.survey.pages.RecommendRatingPage
@@ -29,7 +31,7 @@ fun SurveyScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(horizontal = 24.dp)
-            .testTag("Survey Screen")
+            .testTag(stringResource(id = R.string.survey_test_tag_survey_screen))
     ) {
         when (uiState.currentPage) {
             SurveyPage.RECOMMEND_RATING -> {

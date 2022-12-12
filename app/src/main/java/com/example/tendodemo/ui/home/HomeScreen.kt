@@ -44,7 +44,7 @@ fun HomeScreen(
     Box(
         modifier = Modifier
             .fillMaxSize()
-            .testTag("Home Screen"),
+            .testTag(stringResource(id = R.string.home_test_tag_home_screen)),
         contentAlignment = Alignment.Center
     ) {
         Column(
@@ -61,7 +61,7 @@ fun HomeScreen(
                     contentColor = TendoWhite
                 ),
                 shape = RoundedCornerShape(10.dp),
-                modifier = Modifier.testTag("Take survey button")
+                modifier = Modifier.testTag(stringResource(id = R.string.home_test_tag_survey_button))
             ) {
                 Text(text = stringResource(id = R.string.home_take_survey_btn_text))
             }

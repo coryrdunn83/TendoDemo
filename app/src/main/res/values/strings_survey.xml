@@ -42,4 +42,7 @@
         You expressed the following on your feelings about being diagnosed with %1$s:
     </string>
     <string name="survey_review_submit_btn_text">Submit</string>
+
+    <!-- Test Tags -->
+    <string name="survey_test_tag_survey_screen">Survey Screen</string>
 </resources>
