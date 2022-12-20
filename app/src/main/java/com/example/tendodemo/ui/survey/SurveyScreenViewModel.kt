@@ -74,11 +74,11 @@ data class SurveyScreenState(
 
     val patientDoctorName: String
         get() = patientBundle?.entry?.firstOrNull {
-            it.resource.resourceType == "Doctor"
+            it.resource?.resourceType == "Doctor"
         }?.resource?.name?.firstOrNull()?.family ?: ""
 
     val patientDiagnosis: String
         get() = patientBundle?.entry?.firstOrNull {
-            it.resource.resourceType == "Diagnosis"
+            it.resource?.resourceType == "Diagnosis"
         }?.resource?.code?.coding?.firstOrNull()?.name ?: ""
 }
